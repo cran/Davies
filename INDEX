@@ -1,0 +1,22 @@
+Davies                  The Davies distribution
+Gld                     The Generalized Lambda Distribution
+davies.moment           Moments of the Davies distribution
+davies.start            start value for Davies minimization routines
+expected.gld            expected value of the Generalized Lambda
+                        Distribution
+fit.davies.p            Fits and plots Davies distributions to
+                        datasets
+hypergeo                The hypergeometric function
+least.squares           Finds the optimal Davies distribution for a
+                        dataset
+likelihood              likelihood for the Davies distribution
+normsquare              Square normal distribution
+objective               The objective function for fitting the Davies
+                        distribution
+plotcf                  p-value investigation
+resample.ls             Parametric resampling from a Davies
+                        distribution
+rstupid                 A stupid PDF
+twolines.vert           Order statistic comparison
+x00m700p4               Peak concentration for 100 instantaneous
+                        releases
