@@ -11,7 +11,6 @@
 fit.davies.p(x , print.fit=FALSE , use.q=TRUE , params=NULL, small=1e-5 , ...)
 fit.davies.q(x , print.fit=FALSE, use.q=TRUE  , params=NULL, ...)
 }
-%- maybe also `usage' for other objects documented here.
 \arguments{
   \item{x}{dataset to be fitted and plotted}
   \item{print.fit}{Boolean flag with TRUE meaning print details of the fit}
@@ -20,8 +19,6 @@ fit.davies.q(x , print.fit=FALSE, use.q=TRUE  , params=NULL, ...)
   \item{params}{three-element vector holding the three parameters of the
     davies dataset.  If NULL, determine the parameters using the method
     indicated by \code{use.q}}
-  \item{is.sorted}{Boolean flag with TRUIE meaning that \code{dataset}
-    is sorted from lowest to highest}
   \item{small}{small positive number showing range of quantiles to plot}
   \item{\dots}{Additional parameters passed to \code{plot()}}
 }

@@ -16,15 +16,12 @@ dgld.p(x, params)
 pgld(x, params)
 qgld(p, params)
 rgld(n, params)
-expected.gld(n=1, i=1, params)
 }
 \arguments{
-  \item{x,q}{vector of quantiles.}
+  \item{x}{vector of quantiles.}
   \item{p}{vector of probabilities.}
   \item{n}{number of observations.  If \code{length(n)> 1}, the
     length is taken to be the number required}
-  \item{i}{order statistic.  Thus if \eqn{i=1}{i=1}, we consider the smallest
-    observation and if \eqn{i=n}{i=n} we consider the largest.}
 \item{params}{vector of parameters:  \eqn{params[1]==lambda1} etseq}
 }
 \value{
