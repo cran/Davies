@@ -1,11 +1,11 @@
 Davies                  The Davies distribution
-Gld                     The Generalized Lambda Distribution
 davies.moment           Moments of the Davies distribution
 davies.start            start value for Davies minimization routines
 expected.gld            expected value of the Generalized Lambda
                         Distribution
 fit.davies.p            Fits and plots Davies distributions to
                         datasets
+Gld                     The Generalized Lambda Distribution
 hypergeo                The hypergeometric function
 least.squares           Finds the optimal Davies distribution for a
                         dataset
