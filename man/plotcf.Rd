@@ -24,7 +24,6 @@ Also can be used when H0 is wrong, showing what beta is.
 \seealso{\code{\link{resample.ls}}}
 
 \examples{
-library(ctest)
 f.H0.T <- function(n,free=5){t.test(rt(n,df=free))$p.value}
 f.H0.F <- function(n,free=5){t.test(rf(n,df1=free,df2=free))$p.value}
 

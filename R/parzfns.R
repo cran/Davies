@@ -204,27 +204,29 @@ function (n)
 "hypergeo" <-
 function (A, B, C, z, tol = 1e-06) 
 {
+
+    isgood <- function(x){ abs(x[!is.na(x)]) < tol}
+
     fac <- 1
     temp <- fac
     aa <- A
     bb <- B
     cc <- C
-    for (n in 1:1000) {
+    for (n in 1:2000) {
         fac <- fac * aa * bb/cc
         fac = fac * z/n
         series <- temp + fac
-        if (is.na(series - temp)) {
-            return(NaN)
-        }
-        if (abs(series - temp) < tol) {
-            return(series)
+        test <- isgood(series-temp)
+        if (all(test)){
+          return(series)
         }
         temp <- series
         aa <- aa + 1
         bb <- bb + 1
         cc <- cc + 1
     }
-    return(NaN)
+    series[!test] <- NA
+    return(series)
 }
 "kurtosis" <-
 function (params) 
@@ -385,16 +387,15 @@ function (p, params)
 "qgld" <-
 function (p, params) 
 {
+    out <- p
     l1 <- params[1]
     l2 <- params[2]
     l3 <- params[3]
     l4 <- params[4]
-    if (p <= 0) {
-        return(-Inf)
-    }
-    if (p >= 1) {
-        return(Inf)
-    }
+
+    out[p <= 0] <- -Inf
+    out[p >= 1] <- Inf
+    
     l1 + (p^l3 - (1 - p)^l4)/l2
 }
 "rdavies" <-
