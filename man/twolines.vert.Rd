@@ -15,15 +15,16 @@ twolines.vert(p, y1, y2, ...)
     the vertical lines}
 }
 \details{
-Plots p against y1, and p against y2, and shades the bit in between
-using vertical lines.  This is useful for comparing two order statistics.
+  Plots \code{p} against \code{y1}, and \code{p} against \code{y2}, and
+  shades the bit in between using vertical lines.  This is useful for
+  comparing two order statistics
 }
 \author{Robin K. S. Hankin}
 \seealso{\code{\link{Davies}},\code{\link{qqplot}}}
 
 \examples{
 twolines.vert(1:100,sort(rnorm(100)),sort(rnorm(100)))
-params <- c(10 , 0.1 , -0.1)
+params <- c(10 , 0.1 , 0.1)
 twolines.vert(1:100 , sort(rdavies(100,params)) , sort(rdavies(100,params)))
 }
 \keyword{distribution}

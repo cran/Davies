@@ -1,17 +1,16 @@
 \name{likelihood}
 \alias{likelihood}
 \alias{neg.log.likelihood}
-\title{likelihood for the Davies distribution }
+\title{likelihood for the Davies distribution}
 \description{
-  likelihood of observing \code{data}, on the hypothesis of
+  Likelihood of observing \code{data}, on the hypothesis of
   their coming from a Davies distribution of parameters \code{params}.
-
-  \code{neg.log.likelihood} gives minus the loglikelihood
+  
+  Function \code{neg.log.likelihood()} gives minus the loglikelihood
 }
 \usage{
 likelihood(params, data)
 }
-%- maybe also `usage' for other objects documented here.
 \arguments{
   \item{params}{Parameters of the Davies distribution}
   \item{data}{dataset for which the likelihood is computed}
@@ -20,8 +19,8 @@ likelihood(params, data)
 \seealso{\code{\link{Davies}}}
 
 \examples{
-p1 <- c(10,0.1,-0.1)
-p2 <- c(10,0.4,-0.1)
+p1 <- c(10,0.1, 0.1)
+p2 <- c(10,0.4, 0.1)
 data <- rdavies(100,p1)
 likelihood(p1,data)
 likelihood(p2,data)                 #should be smaller.

@@ -3,7 +3,7 @@ function (n = 1, i = 1, order = 1, params)
 {
     C <- params[1]
     l1 <- params[2]
-    l2 <- params[3]
+    l2 <- -params[3]  # sign change
     determinant <- 1 + n + order * (l1 + l2)
     if (is.na(determinant)) {
         return(determinant)
@@ -18,6 +18,7 @@ function (n = 1, i = 1, order = 1, params)
         return(NaN)
     }
 }
+
 "davies.start" <-
 function (x, threeps = c(0.1, 0.5, 0.9), small = 0.01) 
 {
@@ -45,23 +46,29 @@ function (x, threeps = c(0.1, 0.5, 0.9), small = 0.01)
     l2 <- log(med/right)/log(pmed/plow)
     C <- right/(plow^l2)
     params[3, ] <- as.vector(c(C, l1, l2))
+
+    params[,3] <- -params[,3] #sign change
+
+    
     f <- function(n) {
         objective(params[n, ], x)
     }
     obj <- sapply(1:number.of.methods, f)
     return(params[which.min(obj), ])
 }
+
 "ddavies" <-
 function (x, params) 
 {
     ddavies.p(pdavies(x, params), params)
 }
+
 "ddavies.p" <-
 function (x, params) 
 {
     C <- params[1]
     l1 <- params[2]
-    l2 <- params[3]
+    l2 <- -params[3]  #sign change
     1/(C * (l1 * x^(l1 - 1) * (1 - x)^l2 - l2 * x^l1 * (1 - x)^(l2 - 
         1)))
 }
@@ -81,38 +88,9 @@ function (x, params)
     l2 <- params[2]
     l3 <- params[3]
     l4 <- params[4]
-    1/((l4 * (1 - x)^(l4 - 1) + l3 * p^(l3 - 1))/l2)
+    1/((l4 * (1 - x)^(l4 - 1) + l3 * x^(l3 - 1))/l2)
 }
-"do.gld.ozturk" <-
-function (n, m) 
-{
-    sapply(rep(n, m), gld.ozturk)
-}
-"do.lognorm" <-
-function (n, m) 
-{
-    sapply(rep(n, m), lognorm)
-}
-"do.many.gld.ozturk" <-
-function (vector, times) 
-{
-    cbind(vector, t(sapply(vector, do.gld.ozturk, times)))
-}
-"do.many.lognorm" <-
-function (vector, times) 
-{
-    cbind(vector, t(sapply(vector, do.lognorm, times)))
-}
-"do.many.normsquare" <-
-function (vector, times) 
-{
-    cbind(vector, t(sapply(vector, do.normsquare, times)))
-}
-"do.normsquare" <-
-function (n, m) 
-{
-    sapply(rep(n, m), normsquare)
-}
+
 "expected.gld" <-
 function (n = 1, i = 1, params) 
 {
@@ -124,25 +102,29 @@ function (n = 1, i = 1, params)
         l3, 0)) - davies.moment(n = n, i = i, params = c(1/l2, 
         0, l4)))
 }
+
 "expected.gld.approx" <-
 function (n = 1, i = 1, params) 
 {
     qgld(i/(n + 1), params)
 }
+
 "expected.value" <-
 function (n, i, params) 
 {
     return(davies.moment(n = n, i = i, order = 1, params))
 }
+
 "expected.value.approx" <-
 function (n, i, params) 
 {
     C <- params[1]
     l1 <- params[2]
-    l2 <- params[3]
+    l2 <- -params[3]  #sign convention
     p.i <- i/(n + 1)
     return(C * (p.i)^l1 * (1 - p.i)^l2)
 }
+
 "fit.davies.p" <-
 function (x, print.fit = FALSE, use.q = TRUE, params = NULL, 
     small = 1e-05, ...) 
@@ -171,9 +153,9 @@ function (x, print.fit = FALSE, use.q = TRUE, params = NULL,
     plot(x.fit, y.fit, ylim = c(0, max(y.fit)), type = "l", ...)
     points(x, x * 0, pch = 3)
 }
+
 "fit.davies.q" <-
-function (x, print.fit = FALSE, use.q = TRUE, params = NULL, 
-    ...) 
+function (x, print.fit = FALSE, use.q = TRUE, params = NULL, ...) 
 {
     x <- sort(x)
     if (is.null(params)) {
@@ -196,38 +178,39 @@ function (x, print.fit = FALSE, use.q = TRUE, params = NULL,
     plot(sort(x), pch = 16, ...)
     points(1:n, expected.value(n, 1:n, params), type = "l")
 }
-"gld.ozturk" <-
-function (n) 
-{
-    resample.ls(rgld(n, c(4.114, 0.1333, 0.0193, 0.1588)), n = 99)$p.value
-}
-"hypergeo" <-
-function (A, B, C, z, tol = 1e-06) 
+
+"genhypergeo" <-
+function (U, L, z, tol = 1e-06, maxiter=2000, strict=TRUE) 
 {
 
-    isgood <- function(x){ abs(x[!is.na(x)]) < tol}
+    isgood <- function(x,tol){ all(abs(x[!is.na(x)]) < tol)}
 
     fac <- 1
     temp <- fac
-    aa <- A
-    bb <- B
-    cc <- C
-    for (n in 1:2000) {
-        fac <- fac * aa * bb/cc
+    for (n in seq_len(maxiter)) {
+        fac <- fac * prod(U)/prod(L)
         fac = fac * z/n
         series <- temp + fac
-        test <- isgood(series-temp)
-        if (all(test)){
+        test <- isgood(series-temp,tol)
+        if(all(test)){
           return(series)
         }
         temp <- series
-        aa <- aa + 1
-        bb <- bb + 1
-        cc <- cc + 1
+        
+        U <- U + 1
+        L <- L + 1
+      }
+    if(strict){
+      series[!test] <- NA
     }
-    series[!test] <- NA
     return(series)
+  }
+
+"hypergeo" <- function(A,B,C,z,tol=1e-6,maxiter=2000,strict=TRUE){
+  genhypergeo(U=c(A,B),L=C,z=z,tol=tol,maxiter=maxiter,strict=strict)
 }
+
+
 "kurtosis" <-
 function (params) 
 {
@@ -235,6 +218,7 @@ function (params)
         6 * M(2, params) * M(1, params)^2 - 3 * M(1, params)^4
     return(fourth.moment/variance(params)^2)
 }
+
 "least.squares" <-
 function (data, do.print = FALSE, start.v = NULL) 
 {
@@ -250,21 +234,19 @@ function (data, do.print = FALSE, start.v = NULL)
         return(list(parameters = jj$par, error = jj$value))
     }
 }
+
 "likelihood" <-
 function (params, data) 
 {
     prod(ddavies(data, params))
 }
-"lognorm" <-
-function (n) 
-{
-    resample.ls(exp(rnorm(n)), n = 99)$p.value
-}
+
 "M" <-
 function (order, params) 
 {
     davies.moment(n = 1, i = 1, order = order, params = params)
 }
+
 "maximum.likelihood" <-
 function (data, do.print = FALSE, start.v = NULL) 
 {
@@ -283,21 +265,19 @@ function (data, do.print = FALSE, start.v = NULL)
         return(list(parameters = jj$par, error = jj$value))
     }
 }
+
 "mu" <-
 function (params) 
 {
     M(1, params)
 }
+
 "neg.log.likelihood" <-
 function (params, data) 
 {
     -sum(log(ddavies(data, params)))
 }
-"normsquare" <-
-function (n) 
-{
-    resample.ls(rnorm(n)^2, n = 99)$p.value
-}
+
 "objective" <-
 function (params, dataset) 
 {
@@ -310,6 +290,7 @@ function (params, dataset)
     return(error + penalty(params[1]) + penalty(params[2]) + 
         penalty(-params[3]))
 }
+
 "objective.approx" <-
 function (params, dataset) 
 {
@@ -317,6 +298,7 @@ function (params, dataset)
     n <- length(dataset)
     sum((dataset - expected.value.approx(n, 1:n, params))^2)
 }
+
 "pdavies" <-
 function (x, params) 
 {
@@ -346,23 +328,25 @@ function (x, params)
         return(val)
     }
 }
+
 "pgld" <-
-function (x, params) 
+function (q, params) 
 {
     f <- function(p, a) {
         qgld(p = p, params = a[1:4]) - a[5]
     }
     options(warn = -1)
-    if (length(x) == 1) {
+    if (length(q) == 1) {
         return(uniroot(f, c(0, 1), tol = 1e-06, a = c(params, 
-            x))$root)
+            q))$root)
     }
     else {
-        val <- sapply(x, pgld, params)
-        attributes(val) <- attributes(x)
+        val <- sapply(q, pgld, params)
+        attributes(val) <- attributes(q)
         return(val)
     }
 }
+
 "plotcf" <-
 function (y, q = 0.05) 
 {
@@ -373,17 +357,19 @@ function (y, q = 0.05)
     points(x[is.lt], y[is.lt], pch = 16)
     lines(x[!is.lt], y[!is.lt])
 }
+
 "qdavies" <-
 function (p, params) 
 {
     C <- params[1]
     l1 <- params[2]
-    l2 <- params[3]
+    l2 <- -params[3]
     ans <- C * p^l1 * (1 - p)^l2
     ans[p <= 0] <- 0
     ans[p >= 1] <- Inf
     ans
 }
+
 "qgld" <-
 function (p, params) 
 {
@@ -398,37 +384,13 @@ function (p, params)
     
     l1 + (p^l3 - (1 - p)^l4)/l2
 }
+
 "rdavies" <-
 function (n = 1, params) 
 {
     qdavies(runif(n), params)
 }
-"resample.ls" <-
-function (data, n = 99) 
-{
-    data <- sort(data)
-    jj <- least.squares(data, do.print = TRUE)
-    f <- function(len, data, jj) {
-        least.squares(rdavies(len, jj$parameters), do.print = TRUE)$error
-    }
-    ghost.errors <- sapply(rep(length(data), n), f, data, jj)
-    list(errors = ghost.errors, statistic = jj$error, p.value = sum(ghost.errors > 
-        jj$error)/(n + 1))
-}
-"resample.ml" <-
-function (data, n = 99) 
-{
-    if (is.sorted == FALSE) {
-        data <- sort(data)
-    }
-    jj <- maximum.likelihood(data, do.print = TRUE)
-    f <- function(len, data, jj) {
-        maximum.likelihood(rdavies(len, jj$parameters))$error
-    }
-    ghost.errors <- sapply(rep(length(data), n), f, data, jj)
-    list(errors = ghost.errors, statistic = jj$error, p.value = sum(ghost.errors > 
-        jj$error)/(n + 1))
-}
+
 "rgld" <-
 function (n = 1, params) 
 {
@@ -438,6 +400,7 @@ function (n = 1, params)
     l4 <- params[4]
     return(qgld(runif(n), params))
 }
+
 "rstupid" <-
 function (n, a = 1, b = 2, c = 3, d = 4) 
 {
@@ -447,6 +410,7 @@ function (n, a = 1, b = 2, c = 3, d = 4)
     jj <- rbinom(n, size = 1, p = (b - a)/((b - a) + (d - c)))
     return(jj * runif(n, a, b) + (1 - jj) * runif(n, c, d))
 }
+
 "skewness" <-
 function (params) 
 {
@@ -454,6 +418,7 @@ function (params)
         2 * M(1, params)^3
     return(third.moment/(variance(params)^(3/2)))
 }
+
 "twolines.vert" <-
 function (p, y1, y2, ...) 
 {
@@ -464,6 +429,7 @@ function (p, y1, y2, ...)
     lines(p, y2, type = "l")
     segments(p, y1, p, y2, ...)
 }
+
 "variance" <-
 function (params) 
 {

@@ -4,26 +4,26 @@
 \title{Finds the optimal Davies distribution for a dataset}
 \description{
   Finds the best-fit Davies distribution using either the least-squares
-  criterion (\code{least.squares}) or maximum likelihood (\code{maximum.likelihood}).
+  criterion (\code{least.squares()}) or maximum likelihood
+  (\code{maximum.likelihood()})
 }
 \usage{
 least.squares(data, do.print = FALSE, start.v = NULL)
 maximum.likelihood(data, do.print = FALSE, start.v = NULL)
 }
-%- maybe also `usage' for other objects documented here.
 \arguments{
   \item{data}{dataset to be fitted}
-  \item{do.print}{Boolean flag with TRUE meaning print  a GFM}
+  \item{do.print}{Boolean with \code{TRUE} meaning print a GFM}
   \item{start.v}{A suitable starting vector of parameters
-    c(C,lambda1,lambda2).   If NULL, use start()}
+    \code{c(C,lambda1,lambda2)}.  If \code{NULL}, use start()}
 }
 \details{
- Uses \code{optim()}  to find the best-fit Davies distribution to a set
- of data.
+  Uses \code{optim()} to find the best-fit Davies distribution to a set
+  of data.
 }
 \value{
-Returns the parameters \eqn{C,\lambda_1,\lambda_2}{C,lambda1,lambda2} of
-the best-fit Davies distribution to the dataset \code{data}
+  Returns the parameters \eqn{C,\lambda_1,\lambda_2}{C,lambda1,lambda2} of
+  the best-fit Davies distribution to the dataset \code{data}
 }
 \author{Robin K. S. Hankin}
 \seealso{\code{\link{davies.start}}, \code{\link{optim}},
@@ -33,7 +33,7 @@ the best-fit Davies distribution to the dataset \code{data}
   improve this by using some sort of hot-start for optim().
 }
 \examples{
-p <- c(10 , 0.1 , -0.1)
+p <- c(10 , 0.1 , 0.1)
 data <-rdavies(50,p)
 system.time(print(maximum.likelihood(data)))
                            #observe how long this takes.
