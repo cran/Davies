@@ -1,15 +1,17 @@
 \name{hypergeo}
 \alias{hypergeo}
+\alias{hypergeo2}
 \alias{genhypergeo}
 \alias{conhypergeo}
 \title{The hypergeometric function}
 \description{
 The Hypergeometric and generalized hypergeometric functions as defined
-by Abramowitz and Stegun.  
+by Abramowitz and Stegun.
 }
 \usage{
-hypergeo(A, B, C, z, tol = 1e-06, maxiter = 2000, strict=TRUE)
-genhypergeo(U, L, z, tol=1e-6, maxiter = 2000, strict=TRUE)
+hypergeo (A, B, C, z, tol = 1e-06, maxiter = 2000, strict=TRUE)
+hypergeo2(A, B, C, z, tol = 1e-06, maxiter = 2000, strict=TRUE)
+genhypergeo(U, L, z, tol = 1e-06, maxiter = 2000, strict=TRUE)
 }
 \arguments{
   \item{A,B,C}{Parameters for \code{hypergeo()}}
@@ -63,9 +65,17 @@ Abramowitz and Stegun state:
 
 This reference book gives the correct radius of convergence; use the
 ratio test to verify it.  Just to be absolutely specific: if
-\eqn{|z|>1}, the hypergeometric series will diverge.  Function
-\code{genhypergeo()} will thus fail to converge.  Please do not complain
-to me about this; there is nothing I can do about it.
+\eqn{|z|>1}, the hypergeometric series will diverge.
+
+However, AMS-55 give a transformation: eqn 15.3.7, page 559 converts a
+function of \eqn{z} to one of \eqn{1/z}.  This is used in function
+\code{hypergeo2()}; note that values are coerced to complex.
+
+\strong{The functions described here are deprecated.  For the
+  hypergeometric function, see function \code{hypergeo()} of the
+  \pkg{hypergeo} package, which supports a wide range of transformations
+  and is able to deal with a wide range of special cases of the
+  parameters}
 
 }
 \examples{
