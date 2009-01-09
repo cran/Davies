@@ -22,9 +22,9 @@ expected.gld.approx(n=1, i=1, params)
   Exploits the fact that the \code{gld} quantile function is the sum of
   a constant and two \code{davies} quantile functions
   }
-\references{A. \"{O}zt\"{u}rk and R. F. Dale, \dQuote{Least squares estimation
+\references{A. Ozturk and R. F. Dale, \dQuote{Least squares estimation
     of the parameters of the generalized lambda distribution},
-  Technometrics 1985,  27(1):84
+  Technometrics 1985,  27(1):84 [diacritics omitted]
 }
 \seealso{\code{\link{Gld}} , \code{\link{expected.value}}}
 \examples{
