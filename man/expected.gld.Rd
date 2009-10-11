@@ -20,11 +20,13 @@ expected.gld.approx(n=1, i=1, params)
   Distribution RV.
   
   Exploits the fact that the \code{gld} quantile function is the sum of
-  a constant and two \code{davies} quantile functions
-  }
-\references{A. Ozturk and R. F. Dale, \dQuote{Least squares estimation
-    of the parameters of the generalized lambda distribution},
-  Technometrics 1985,  27(1):84 [diacritics omitted]
+  a constant and two \code{davies} quantile functions}
+
+\references{A. Ozturk and R. F. Dale, \dQuote{Least squares
+  estimation of the parameters of the generalized lambda distribution},
+  Technometrics 1985, 27(1):84 [it does not appear to be possible, as of
+  R-2.9.1, to render the diacritic marks in the first author's names in
+  a nicely portable way]
 }
 \seealso{\code{\link{Gld}} , \code{\link{expected.value}}}
 \examples{

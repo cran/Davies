@@ -6,7 +6,9 @@
 \title{The hypergeometric function}
 \description{
 The Hypergeometric and generalized hypergeometric functions as defined
-by Abramowitz and Stegun.
+by Abramowitz and Stegun.  \strong{These functions are defunct and
+  will be removed altogether soon.  To evaluate hypergeometric functions, use
+  the \pkg{hypergeo} package}
 }
 \usage{
 hypergeo (A, B, C, z, tol = 1e-06, maxiter = 2000, strict=TRUE)
@@ -71,7 +73,7 @@ However, AMS-55 give a transformation: eqn 15.3.7, page 559 converts a
 function of \eqn{z} to one of \eqn{1/z}.  This is used in function
 \code{hypergeo2()}; note that values are coerced to complex.
 
-\strong{The functions described here are deprecated.  For the
+\strong{The functions described here are defunct.  For the
   hypergeometric function, see function \code{hypergeo()} of the
   \pkg{hypergeo} package, which supports a wide range of transformations
   and is able to deal with a wide range of special cases of the
@@ -79,6 +81,8 @@ function of \eqn{z} to one of \eqn{1/z}.  This is used in function
 
 }
 \examples{
+
+\dontrun{
 #  equation 15.1.3, page 556:
 f1 <- function(x){-log(1-x)/x}
 f2 <- function(x){hypergeo(1,1,2,x)}
@@ -96,7 +100,7 @@ abs(g1(x+0.1i) - g2(x+0.1i))  # should have small modulus.
 
 # Just a random call, verified by Maple [ Hypergeom([],[1.22],0.9087) ]:
 genhypergeo(NULL,1.22,0.9087)
-
+}
 }
 \keyword{math}
 

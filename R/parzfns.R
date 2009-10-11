@@ -182,7 +182,7 @@ function (x, print.fit = FALSE, use.q = TRUE, params = NULL, ...)
 "genhypergeo" <-
 function (U, L, z, tol = 1e-06, maxiter=2000, strict=TRUE) 
 {
-  .Deprecated("hypergeo", package="hypergeo", msg="The hypergeometric functionality of the Davies package is now deprecated.  Use hypergeo() of the hypergeo package instead")
+  .Defunct("hypergeo", package="hypergeo", msg="The hypergeometric functionality of the Davies package is now defunct.  Use hypergeo() of the hypergeo package instead")
   
     isgood <- function(x,tol){ abs(x[!is.na(x)]) < tol}
 

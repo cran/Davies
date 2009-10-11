@@ -2,7 +2,7 @@ citHeader("To cite in publications use:")
 
 citEntry(entry = "Article",
 	 title = {
-             paste("A new family of non-negative distributions.")
+             paste("A new family of non-negative distributions")
 	     },
 	 author = personList(
          person(first = "R.",

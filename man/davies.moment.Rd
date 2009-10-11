@@ -9,8 +9,9 @@
 \alias{M}
 \title{Moments of the Davies distribution}
 \description{
-  Moments of order statistics of RVs drawn from a Davies distribution
-}
+  Moments of order statistics of random variables drawn from a Davies
+  distribution 
+} 
 \usage{
 davies.moment(n=1 , i=1 , order=1 , params)
 M(order,params)
@@ -22,24 +23,23 @@ skewness(params)
 kurtosis(params)
 }
 \arguments{
-  \item{params}{A three-member vector holding~\eqn{C}{C} ,
+  \item{params}{A three-member vector holding~\eqn{C},
     \eqn{\lambda_1}{lambda1} and~\eqn{\lambda_2}{lambda2}}
   \item{n}{The number of observations}
-  \item{i}{Return information about the ith order statistic (ie i=1
-    means the smallest, i=n means the biggest)}
+  \item{i}{Return information about the \eqn{i}-th order statistic (ie
+    \eqn{i=1} means the smallest, \eqn{i=n} means the biggest)}
   \item{order}{The order (eg order=2 gives the square)}
 }
 \details{
-
-  Function \code{davies.moment()} gives the rth moment of the ith order statistic of
-  n observations.  The following aliases are just newbie wrappers with
-  \eqn{n=i=1} (ie moments of one observation from a Davies
-  distribution):
+  Function \code{davies.moment()} gives the \eqn{r}-th moment of the
+  \eqn{i}-th order statistic of \eqn{n} observations.  The following
+  aliases are just newbie wrappers with \eqn{n=i=1} (ie moments of one
+  observation from a Davies distribution):
   \itemize{
-    \item \code{M()} gives the r-th moment for n=i=1
+    \item \code{M()} gives the \eqn{r}-th moment for \eqn{n=i=1}
     \item \code{mu()} gives the first moment of a Davies distribution
     (ie the mean)
-    \item \code{variance()} gives the second {\em central} moment of a Davies
+    \item \code{variance()} gives the second \emph{central} moment of a Davies
     distribution
     \item \code{skewness()} gives the normalized skewness of a Davies
     distribution
