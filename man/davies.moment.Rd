@@ -23,15 +23,15 @@ skewness(params)
 kurtosis(params)
 }
 \arguments{
-  \item{params}{A three-member vector holding~\eqn{C},
-    \eqn{\lambda_1}{lambda1} and~\eqn{\lambda_2}{lambda2}}
+  \item{params}{A three-member vector holding \eqn{C},
+    \eqn{\lambda_1}{lambda1} and \eqn{\lambda_2}{lambda2}}
   \item{n}{The number of observations}
   \item{i}{Return information about the \eqn{i}-th order statistic (ie
     \eqn{i=1} means the smallest, \eqn{i=n} means the biggest)}
   \item{order}{The order (eg order=2 gives the square)}
 }
 \details{
-  Function \code{davies.moment()} gives the \eqn{r}-th moment of the
+  Function \code{davies.moment(n,i,order=r)} gives the \eqn{r}-th moment of the
   \eqn{i}-th order statistic of \eqn{n} observations.  The following
   aliases are just newbie wrappers with \eqn{n=i=1} (ie moments of one
   observation from a Davies distribution):

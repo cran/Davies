@@ -27,7 +27,7 @@ fit.davies.q(x , print.fit=FALSE, use.q=TRUE , params=NULL, ...)
 }
 
 \examples{
-  fit.davies.q(rnorm(100)^2)
+  fit.davies.q(rchisq(100,1))
   fit.davies.p(exp(rnorm(100))) 
 
   data(x00m700p4)

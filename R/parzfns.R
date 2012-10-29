@@ -179,53 +179,6 @@ function (x, print.fit = FALSE, use.q = TRUE, params = NULL, ...)
     points(1:n, expected.value(n, 1:n, params), type = "l")
 }
 
-"genhypergeo" <-
-function (U, L, z, tol = 1e-06, maxiter=2000, strict=TRUE) 
-{
-  .Defunct("hypergeo", package="hypergeo", msg="The hypergeometric functionality of the Davies package is now defunct.  Use hypergeo() of the hypergeo package instead")
-  
-    isgood <- function(x,tol){ abs(x[!is.na(x)]) < tol}
-
-    fac <- 1
-    temp <- fac
-    for (n in seq_len(maxiter)) {
-        fac <- fac * prod(U)/prod(L)
-        fac = fac * z/n
-        series <- temp + fac
-        test <- isgood(series-temp, tol)
-        if(all(test)){
-          return(series)
-        }
-        temp <- series
-        
-        U <- U + 1
-        L <- L + 1
-      }
-    if(strict){
-      series[!test] <- NA
-    }
-    return(series)
-  }
-
-"hypergeo" <- function(A,B,C,z,tol=1e-6,maxiter=2000,strict=TRUE){
-  genhypergeo(U=c(A,B),L=C,z=z,tol=tol,maxiter=maxiter,strict=strict)
-}
-
-"hypergeo2" <- function(A,B,C,z,tol=1e-6,maxiter=2000,strict=TRUE){
-
-  f1 <- function(z){genhypergeo(U=c(A,B), L=C, z=z,tol=tol,maxiter=maxiter,strict=strict)}
-
-  jj1 <- gamma(C)*gamma(B-A)/(gamma(B)*gamma(C-A))
-  jj2 <- gamma(C)*gamma(A-B)/(gamma(A)*gamma(C-B))
-  f2 <- function(z){
-    jj1 * (-z+0i)^(-A) * genhypergeo(U=c(A, 1-C+A), L=1-B+A, z=1/z,tol=tol,maxiter=maxiter,strict=strict) +
-    jj2 * (-z+0i)^(-B) * genhypergeo(U=c(B, 1-C+B), L=1-A+B, z=1/z,tol=tol,maxiter=maxiter,strict=strict)
-  }
-
-  ifelse(Mod(z) <= 1, f1(z),f2(z))
-}
-
-
 "kurtosis" <-
 function (params) 
 {
@@ -422,7 +375,7 @@ function (n, a = 1, b = 2, c = 3, d = 4)
     if (!((a < b) & (b < c) & (c < d))) {
         stop("should have a<b<c<d")
     }
-    jj <- rbinom(n, size = 1, p = (b - a)/((b - a) + (d - c)))
+    jj <- rbinom(n, size = 1, prob = (b - a)/((b - a) + (d - c)))
     return(jj * runif(n, a, b) + (1 - jj) * runif(n, c, d))
 }
 

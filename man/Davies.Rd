@@ -23,23 +23,27 @@ ddavies.p(x,params)
   \item{p}{vector of probabilities}
   \item{n}{number of observations.  If \code{length(n) > 1}, the length
     is taken to be the number required}
-  \item{params}{A three-member vector holding~\eqn{C}{C} ,
+  \item{params}{A three-member vector holding \eqn{C}{C} ,
     \eqn{\lambda_1}{lambda1} and~\eqn{\lambda_2}{lambda2}}
 }
 \details{
   The Davies distribution is defined in terms of its quantile function:
-  \deqn{Cp^{\lambda_1}(1-p)^\lambda_2}{Cp^lambda_1/(1-p)^lambda2}
+  \deqn{Cp^{\lambda_1}/(1-p)^{\lambda_2}}{Cp^lambda_1/(1-p)^lambda2}
 
   It does not have a closed-form  probability density function or
   cumulative density function, so numerical solution is used.
 }
 \value{
-  \code{ddavies} gives the density,
-  \code{pdavies} gives the distribution function,
-  \code{qdavies} gives the quantile function, and
-  \code{rdavies} generates random deviates.
+  Function
+  \code{ddavies()} gives the density,
+  \code{pdavies()} gives the distribution function,
+  \code{qdavies()} gives the quantile function, and
+  \code{rdavies()} generates random deviates.
 }
-\references{draft MS available from the author on request}
+\references{
+  R. K. S. Hankin and A. Lee 2006.  \dQuote{A new family of non-negative
+    distributions}  \emph{Australia and New Zealand Journal of
+  Statistics}, 48(1):67--78}
 \author{Robin K. S. Hankin}
 \seealso{\code{\link{Gld}}, \code{\link{fit.davies.p}},
   \code{\link{least.squares}}, \code{\link{skewness}}}

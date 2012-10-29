@@ -23,14 +23,15 @@ rgld(n, params)
   \item{p}{vector of probabilities}
   \item{n}{In function \code{rgld()}, the number of observations.  If \code{length(n)> 1}, the
     length is taken to be the number required}
-\item{params}{vector of parameters: \eqn{params[1]==lambda1} et seq}
+\item{params}{vector of parameters: \code{params[1]==lambda1} et seq}
 }
 \value{
-  \code{dgld} gives the density,
-  \code{dgld.p} gives the density in terms of the quantile,
-  \code{pgld} gives the distribution function,
-  \code{qgld} gives the quantile function, and
-  \code{rgld} generates random deviates.
+  Function 
+  \code{dgld()} gives the density,
+  \code{dgld.p()} gives the density in terms of the quantile,
+  \code{pgld()} gives the distribution function,
+  \code{qgld()} gives the quantile function, and
+  \code{rgld()} generates random deviates.
 }
 \details{
   The Generalized Lambda distribution has quantile function
@@ -42,12 +43,12 @@ rgld(n, params)
 \references{
   \itemize{
     \item
-    M. J. Wichura 1988. \emph{Algorithm AS 241: The Percentage Points of
-      the Normal Distribution}.  Applied Statistics, \bold{37}, 477--484.
+    M. J. Wichura 1988. \dQuote{Algorithm AS 241: The Percentage Points of
+      the Normal Distribution}.  \emph{Applied Statistics}, \bold{37}, 477--484.
     \item
-    A. \"{O}zt\"{u}rk and R. F. Dale 1985.  \emph{Least squares estimation
+    A. Ozturk and R. F. Dale 1985.  \dQuote{Least squares estimation
       of the parameters of the generalized lambda distribution}.
-    Technometrics 27(1):84
+    \emph{Technometrics} 27(1):84
     }
 }
 \examples{

@@ -15,13 +15,13 @@ objective.approx(params, dataset)
   \item{dataset}{The dataset to be considered}
 }
 \details{
-  Used by the fit.davies.p() and fit.davies.q() functions
+  Used by the \code{fit.davies.p()} and \code{fit.davies.q()} functions
 }
 \value{
   \code{objective} returns the \dQuote{distance} of a
   dataset from a particular
   Davies distribution as measured by the sums of the squares of the
-  differences between observed (\code{dataset} and
+  differences between observed (\code{dataset}) and
   expected (\code{expected.value()}) values.
 
   \code{objective.approx()} uses \code{expected.approx()} rather than

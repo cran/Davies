@@ -1,11 +1,11 @@
 Package: Davies
 Title: The Davies quantile function
-Version: 1.1-5
+Version: 1.1-7
 Author: Robin K. S. Hankin
-Description: The Davies quantile function and the Generalized Lambda
-        distribution
+Description: Various utilities for the Davies distribution and the
+        generalized lambda distribution
 Maintainer: Robin K. S. Hankin <hankin.robin@gmail.com>
 License: GPL-2
-Packaged: 2009-10-11 19:03:45 UTC; rksh
 Repository: CRAN
-Date/Publication: 2009-10-15 11:07:26
+Date/Publication: 2012-10-29 08:56:55
+Packaged: 2012-10-29 08:56:55 UTC; ripley

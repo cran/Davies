@@ -15,7 +15,8 @@ maximum.likelihood(data, do.print = FALSE, start.v = NULL)
   \item{data}{dataset to be fitted}
   \item{do.print}{Boolean with \code{TRUE} meaning print a GFM}
   \item{start.v}{A suitable starting vector of parameters
-    \code{c(C,lambda1,lambda2)}.  If \code{NULL}, use start()}
+    \code{c(C,lambda1,lambda2)}, with default \code{NULL} meaning to
+    use \code{start()}}
 }
 \details{
   Uses \code{optim()} to find the best-fit Davies distribution to a set
@@ -29,18 +30,19 @@ maximum.likelihood(data, do.print = FALSE, start.v = NULL)
 \seealso{\code{\link{davies.start}}, \code{\link{optim}},
   \code{\link{objective}}, \code{\link{likelihood}}}
 \note{BUGS: can be screwed with bad value for \code{start.v}.
-  maximum.likelihod() is very slow.  It  might be possible to
-  improve this by using some sort of hot-start for optim().
+  Function \code{maximum.likelihod()} can be very slow.
+  It might be possible to improve this by using some sort of hot-start
+  for \code{optim()}.
 }
 \examples{
 p <- c(10 , 0.1 , 0.1)
-data <-rdavies(50,p)
-system.time(print(maximum.likelihood(data)))
+d <- rdavies(50,p)
+system.time(print(maximum.likelihood(d)))
                            #observe how long this takes.
                            #The time is taken in repeated calls
                            #to pdavies(), which uses uniroot().
 
-system.time(print(least.squares(data)))
+system.time(print(least.squares(d)))
                            #Much faster.
 }
 \keyword{distribution}
