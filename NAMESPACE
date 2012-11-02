@@ -1,5 +1,7 @@
-# Default NAMESPACE created by R
-# Remove the previous line if you edit this file
-
-# Export all names
-exportPattern(".")
+export("davies.moment", "davies.start", "ddavies", "ddavies.p",
+"dgld", "dgld.p", "expected.gld", "expected.gld.approx",
+"expected.value", "expected.value.approx", "fit.davies.p",
+"fit.davies.q", "kurtosis", "least.squares", "likelihood", "M",
+"maximum.likelihood", "mu", "neg.log.likelihood", "objective",
+"objective.approx", "pdavies", "pgld", "plotcf", "qdavies", "qgld",
+"rdavies", "rgld", "rstupid", "skewness", "twolines.vert", "variance")

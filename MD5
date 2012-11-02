@@ -1,8 +1,8 @@
-795129e2a7a7daa7d4140ae56a8c7c49 *DESCRIPTION
-9fdfeb11f7ddba6f3aab9aaa6b1ac5dd *NAMESPACE
+528d2e283baa65a7928ed378853e257f *DESCRIPTION
+17c7e77c578219f6c7ab2f5439c9f787 *NAMESPACE
 adae21484ee314148e29866ec5fed3ba *R/parzfns.R
-8fde148a6a1d994e4497e531403cea19 *data/ozturk.rda
-9fc7f2b74eeeb55a29bc7cac0eb873c5 *data/x00m700p4.rda
+32e315924fe11f7ba56c80d490c4f1fe *data/ozturk.rda
+b45d7e0c4351310fbb891940551d2adf *data/x00m700p4.rda
 3e1b572fdb28460c9e89609b0c1e0c84 *inst/CITATION
 c1b0f4cfba53e4aa6cd743a5d701cfd7 *man/Davies.Rd
 b2cce7b9b281f359da59803e54177592 *man/Gld.Rd
