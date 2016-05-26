@@ -5,3 +5,6 @@ export("davies.moment", "davies.start", "ddavies", "ddavies.p",
 "maximum.likelihood", "mu", "neg.log.likelihood", "objective",
 "objective.approx", "pdavies", "pgld", "plotcf", "qdavies", "qgld",
 "rdavies", "rgld", "rstupid", "skewness", "twolines.vert", "variance")
+
+importFrom("graphics", "lines", "plot", "points", "segments")
+importFrom("stats", "optim", "quantile", "rbinom", "runif", "uniroot")

@@ -66,7 +66,9 @@ g <- function(j,vector,pp,qq=1){points(t(sapply(vector,f,y=j)),type="l",col="bla
 vector <- c((0:300)/100 , (0:300)/10000 , seq(from=3,to=10,len=100))
 vector <- sort(unique(vector))
 
-plot(t(sapply((0:10)/10,f,y=0)),xlim=c(-3,3),ylim=c(0,10),type="n",xlab="skewness",ylab="kurtosis")
+plot(t(sapply((0:10)/10,f,y=0)),
+       xlim=c(-3,3),ylim=c(0,10),
+       type="n",xlab="skewness",ylab="kurtosis")
 g(0.001,vector,"red",qq=1)
 g(0.01,vector,"yellow",qq=2)
 g(0.02,vector,"green",qq=3)
@@ -77,7 +79,9 @@ g(0.14,vector,"black",qq=6)
 x <- seq(from=-3,to=3,len=30)
 points(x,x^2+1,type="l",lwd=2)
 
-leg.txt <- expression(lambda[2]==0.001,lambda[2]==0.01,lambda[2]==0.02,lambda[2]==0.05,lambda[2]==0.1,lambda[2]==0.14)
+leg.txt <- expression(lambda[2]==0.001,
+        lambda[2]==0.01,lambda[2]==0.02,lambda[2]==0.05,
+        lambda[2]==0.1,lambda[2]==0.14)
 legend(-1.1,10,leg.txt,col="black",lty=1:6)
 }
 \keyword{distribution}

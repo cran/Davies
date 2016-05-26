@@ -1,12 +1,12 @@
-528d2e283baa65a7928ed378853e257f *DESCRIPTION
-17c7e77c578219f6c7ab2f5439c9f787 *NAMESPACE
+49f1de75d65b1c794a4af27965ab73ba *DESCRIPTION
+a3aceae84578d8b23d2274d3caa69fe1 *NAMESPACE
 adae21484ee314148e29866ec5fed3ba *R/parzfns.R
-32e315924fe11f7ba56c80d490c4f1fe *data/ozturk.rda
-b45d7e0c4351310fbb891940551d2adf *data/x00m700p4.rda
+a2ca5f3098f8078c6e1f8bdf5d7e3f78 *data/ozturk.rda
+c78a59c18a83eb90d59a5ffae0dd2641 *data/x00m700p4.rda
 3e1b572fdb28460c9e89609b0c1e0c84 *inst/CITATION
 c1b0f4cfba53e4aa6cd743a5d701cfd7 *man/Davies.Rd
 b2cce7b9b281f359da59803e54177592 *man/Gld.Rd
-16a45bcecdca510130d0044b126563a8 *man/davies.moment.Rd
+89178ef253e534cdd21e5f112ffa5375 *man/davies.moment.Rd
 64ad5fbbe20766d6e7ae86cc47d1475b *man/davies.start.Rd
 7887ce6afcc9f0441b3aea98f528a99c *man/expected.gld.Rd
 c1bcf30771a886dfbfe9aa09a31de849 *man/fit.davies.p.Rd
