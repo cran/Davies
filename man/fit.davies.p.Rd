@@ -3,8 +3,13 @@
 \alias{fit.davies.q}
 \title{Fits and plots Davies distributions to datasets}
 \description{
-  A newbie wrapper (and pretty-printer) for \code{maximum.likelihood()} and
-  \code{least.squares()}.  Draws an empirical quantile function (\code{fit.davies.p()}) or PDF (\code{fit.davies.q()}) and the dataset
+
+  A convenience wrapper (and pretty-printer) for
+  \code{maximum.likelihood()} and \code{least.squares()}.  Given a
+  dataset, it draws an empirical quantile function
+  (\code{fit.davies.p()}) or PDF (\code{fit.davies.q()}) and
+  superimposes the dataset.
+
 }
 \usage{
 fit.davies.p(x , print.fit=FALSE, use.q=TRUE , params=NULL, small=1e-5 , ...)

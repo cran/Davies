@@ -21,6 +21,10 @@ maximum.likelihood(data, do.print = FALSE, start.v = NULL)
 \details{
   Uses \code{optim()} to find the best-fit Davies distribution to a set
   of data.
+
+  \strong{Function \code{least.squares()} does not match that of Hankin
+    and Lee 2006}.
+
 }
 \value{
   Returns the parameters \eqn{C,\lambda_1,\lambda_2}{C,lambda1,lambda2} of
@@ -29,20 +33,23 @@ maximum.likelihood(data, do.print = FALSE, start.v = NULL)
 \author{Robin K. S. Hankin}
 \seealso{\code{\link{davies.start}}, \code{\link{optim}},
   \code{\link{objective}}, \code{\link{likelihood}}}
-\note{BUGS: can be screwed with bad value for \code{start.v}.
-  Function \code{maximum.likelihod()} can be very slow.
-  It might be possible to improve this by using some sort of hot-start
-  for \code{optim()}.
-}
-\examples{
-p <- c(10 , 0.1 , 0.1)
-d <- rdavies(50,p)
-system.time(print(maximum.likelihood(d)))
-                           #observe how long this takes.
-                           #The time is taken in repeated calls
-                           #to pdavies(), which uses uniroot().
 
-system.time(print(least.squares(d)))
-                           #Much faster.
+\note{BUGS:
+
+  Function \code{least.squares()} does not use the same methodology of
+  Hankin and Lee 2006, and its use is discouraged pending implentation.
+  
+  Quite apart from that, it can be screwed with bad value for
+  \code{start.v}.  Function \code{maximum.likelihod()} can be very slow.
+  It might be possible to improve this by using some sort of hot-start
+  for \code{optim()}.  }
+
+\examples{
+
+  p <- c(10 , 0.1 , 0.1)
+  d <- rdavies(10,p)
+
+  maximum.likelihood(d)  # quite slow
+  least.squares(d)       # much faster but not recommended
 }
 \keyword{distribution}

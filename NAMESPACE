@@ -8,3 +8,5 @@ export("davies.moment", "davies.start", "ddavies", "ddavies.p",
 
 importFrom("graphics", "lines", "plot", "points", "segments")
 importFrom("stats", "optim", "quantile", "rbinom", "runif", "uniroot")
+
+import("mathjaxr")

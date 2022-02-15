@@ -21,7 +21,7 @@ rstupid(n, a = 1, b = 2, c = 3, d = 4)
   distribution.
   
   You could probably come up with a more stupid distribution
-  if you tried
+  if you tried.
 }
 \author{Robin K. S. Hankin}
 \seealso{\code{\link{Davies}}}

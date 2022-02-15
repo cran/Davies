@@ -31,10 +31,11 @@ kurtosis(params)
   \item{order}{The order (eg order=2 gives the square)}
 }
 \details{
-  Function \code{davies.moment(n,i,order=r)} gives the \eqn{r}-th moment of the
-  \eqn{i}-th order statistic of \eqn{n} observations.  The following
-  aliases are just newbie wrappers with \eqn{n=i=1} (ie moments of one
-  observation from a Davies distribution):
+  Function \code{davies.moment(n,i,order=r)} gives the \eqn{r}-th moment
+  of the \eqn{i}-th order statistic of \eqn{n} observations.  The
+  following aliases are just convenience wrappers with \eqn{n=i=1} (ie
+  moments of one observation from a Davies distribution):
+
   \itemize{
     \item \code{M()} gives the \eqn{r}-th moment for \eqn{n=i=1}
     \item \code{mu()} gives the first moment of a Davies distribution

@@ -5,12 +5,11 @@ citEntry(entry = "Article",
              paste("A new family of non-negative distributions")
 	     },
 	 author = personList(
-         person(first = "R.",
-		middle = "K. S.",
-		last = "Hankin",
-		email="rksh1@cam.ac.uk"),
-	 person(first = "A.",
-	 	last = "Lee",
+         person(given = c("Robin","K.S."),
+		family = "Hankin",
+		email="hankin.robin@gmail.com"),
+	 person(given = "Alan",
+	 	family = "Lee",
 		email = "lee@stat.auckland.ac.nz")
 		),
 	 journal = "Australia and New Zealand Journal of Statistics",
