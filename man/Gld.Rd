@@ -7,7 +7,7 @@
 \alias{qgld}
 \alias{rgld}
 \title{The Generalized Lambda Distribution}
-\description{\loadmathjax
+\description{
   Density, distribution function, quantile function and random
   generation for the Generalized Lambda Distribution
 }
@@ -36,7 +36,7 @@ rgld(n, params)
 \details{
   The Generalized Lambda distribution has quantile function
 
-  \mjdeqn{f(x)=\lambda_1 +(p^{\lambda_3} - (1-p)^{\lambda_4})/\lambda_2}{f(x)=lambda1 +(p^lambda3 - (1-p)^lambda_4)/lambda_2}
+  \deqn{f(x)=\lambda_1 +(p^{\lambda_3} - (1-p)^{\lambda_4})/\lambda_2}{f(x)=lambda1 +(p^lambda3 - (1-p)^lambda_4)/lambda_2}
 }
 \seealso{
 \code{\link{Davies}}, \code{\link{expected.gld}}
